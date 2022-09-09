@@ -11,27 +11,12 @@ Alternatively you can be lazy and tack on the URL after `md.poecoh.com/`, or pas
 
 Note: must use `POST` when sending anything in the body, and content-type `application/json` to send a json.
 
-All supplied URLs must be full http/s
-
 ## Parameters
-`title`
-- SearchParam: String
-- Json Object: String
+`title` Window title.
 
-`css`
-- SearchParam: URL
-- Json Object: URL
+`css` Link to css file.
 
-`style`
-- SearchParam: URL
-- Json Object: URL/String
-
-`md`
-- SearchParam: URL
-- Json Object: URL/String
-
-
-
+`md`/`style` Will attempt to resolve the supplied value, if it fails it will treat it as plain text.
 
 ## Examples
 ```javascript
@@ -42,8 +27,4 @@ const html = await fetch('md.poecoh.com/?title=Document', {
   },
   body: JSON.stringify(data)
 });
-```
-
-```javascript
-const html = await fetch('md.poecoh.com/www.example.com/README.md);
 ```
