@@ -6,15 +6,10 @@ Page title can be set with `?title=` and markdown can be passed either through a
 Note: must use POST if you want to pass anything in the body and use `application/text` or `text/plain`.
 
 ```javascript
-const data = {
-  title: "Markdown Document",
-  md: "# Markdown Text"
-};
-
 const html = await fetch('md.poecoh.com', {
   method: "POST",
   headers: {"content-type": "application/text"},
-  body: JSON.stringify(data)
+  body: "# Markdown"
 });
 ```
 
