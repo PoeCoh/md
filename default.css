@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
 body {
-  color: #fff !important;
-  background-color: RGBA(33, 37, 41, var(--bs-bg-opacity, 1)) !important;
+  color: #fff;
+  background-color: RGBA(33, 37, 41);
 }
