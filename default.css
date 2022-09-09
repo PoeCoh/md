@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-body {
+body, h1, h2, p {
   color: #fff;
-  background-color: RGBA(33, 37, 41);
 }
