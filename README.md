@@ -25,3 +25,5 @@ const html = await fetch('md.poecoh.com', {
   body: JSON.stringify(data)
 });
 ```
+
+Style for page is a work in progress.
