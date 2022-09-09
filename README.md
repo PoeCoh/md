@@ -1,30 +1,27 @@
 # md.poeoch.com
 I wanted an easier way to turn markdown files into html pages without having to use a service to compile everything after every change or pass the burden onto users browsers. This was the end result.
 
-I figured someone else out there had a similar idea, and I ran across [this](https://nicholas.cloud/blog/continuing-hijinks-with-cloudflare-workers/) while trying to use GO with CF Workers. Sadly that project has been abandoned, and so has the project he linked as a replacement. Not seeing anything else immediantly available I figured I would have to suck it up and write my own.
+I figured someone else out there had to have a similar idea. I ran across [this](https://nicholas.cloud/blog/continuing-hijinks-with-cloudflare-workers/) while trying to use GO with CF Workers, sadly that project has been abandoned, as has the project he linked as a replacement. Not seeing anything else immediantly available I figured I would have to suck it up and write my own.
 
-All of the heavy lifting is being done by [Showdown](https://showdownjs.com/), i just wrapped it in a CF Worker, then added some stuff. Then added more stuff. However if you're here you probably don't care about any of this, you just want to use it.
+All of the heavy lifting is being done by [Showdown](https://showdownjs.com/) and [Cloudflare Workers](https://workers.cloudflare.com/), with a little bit of bootstrap to make it all half presentable.
 
-This worker will take whatever markdown and parameters you feed it and spit out a full html page. Parameters can be supplied with either search params, json object, or both. Search param will be prioritized over json for any conflicts.
+Parameters are `title`, `style`, and `md`. `style` and `md` can be passed as URLs in search params or as either a URL or plain text in a json.
 
-Alternatively you can be lazy and tack on the URL after `md.poecoh.com/`, or pass the plain text in the request body with content-type of `application/text` or `text/plain`.
+`style` will be placed between the `<style>` tags in the header.
 
-Note: must use `POST` when sending anything in the body, and content-type `application/json` to send a json.
+For the lazy, markdown can also be passed as plain text in the request body.
 
-## Parameters
-`title` Window title.
+Note: must use POST if you want to pass anything in the body, and use either `application/json` or `application/text`/`text/plain`.
 
-`css` Link to css file.
-
-`md`/`style` Will attempt to resolve the supplied value, if it fails it will treat it as plain text.
-
-## Examples
 ```javascript
-const html = await fetch('md.poecoh.com/?title=Document', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json`
-  },
+const data = {
+  title: "Markdown Document",
+  md: "# Markdown Text"
+};
+
+const html = await fetch('md.poecoh.com', {
+  method: "POST",
+  headers: {"content-type": "application/text"},
   body: JSON.stringify(data)
 });
 ```
