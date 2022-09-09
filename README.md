@@ -14,13 +14,24 @@ Note: must use `POST` when sending anything in the body, and content-type `appli
 All supplied URLs must be full http/s
 
 ## Parameters
-`title`: Title of the window.
+`title`
+- SearchParam: String
+- Json Object: String
 
-`css`: URL of the css you want to use.
+`css`
+- SearchParam: URL
+- Json Object: URL
 
-`style`: Must be a URL when given in search params, or URL/plain text in a json. This is inserted between `<style></style>` in the header.
+`style`
+- SearchParam: URL
+- Json Object: URL/String
 
-`md`: Must be a URL when given in search params, or URL/plain text in a json. This is inserted between `<body></body>`.
+`md`
+- SearchParam: URL
+- Json Object: URL/String
+
+
+
 
 ## Examples
 ```javascript
