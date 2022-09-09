@@ -1,5 +1,5 @@
 # md.poeoch.com
-This is a [Cloudflare Workers](https://workers.cloudflare.com/) that uses [Showdown](https://showdownjs.com/) and [Bootstrap](https://getbootstrap.com/) to make half decent html pages for documentation.
+This is a [Cloudflare Worker](https://workers.cloudflare.com/) that uses [Showdown](https://showdownjs.com/) and [Bootstrap](https://getbootstrap.com/) to create half decent html pages for documentation.
 
 Page title can be set with `?title=` and markdown can be passed either through a url like `?md=` or as plain text in the body.
 
